@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import Providers from "@/components/Providers";
+import { Button } from "@/components/ui/button";
+import { ShoppingCart } from "lucide-react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -28,7 +31,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <Providers>
+          <header className="bg-white shadow">
+            <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+              <h1 className="text-3xl font-bold text-gray-900">Eco Store</h1>
+              <Button variant="outline" size="icon">
+                <ShoppingCart className="h-6 w-6" />
+                <span className="sr-only">View cart</span>
+              </Button>
+            </div>
+          </header>
+          {children}
+        </Providers>
       </body>
     </html>
   );
